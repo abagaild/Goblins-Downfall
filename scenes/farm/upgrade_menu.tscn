@@ -1,0 +1,252 @@
+[gd_scene load_steps=2 format=3 uid="uid://c8kqfxwluojr2"]
+
+[ext_resource type="Script" uid="uid://bywc4h5gp7ptg" path="res://scripts/ui/upgrade_menu.gd" id="1_uxcvs"]
+
+[node name="UpgradeMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_uxcvs")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.7)
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -250.0
+offset_right = 400.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -200.0
+offset_top = 20.0
+offset_right = 200.0
+offset_bottom = 60.0
+grow_horizontal = 2
+text = "Upgrades"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TabContainer" type="TabContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 70.0
+offset_right = -20.0
+offset_bottom = -70.0
+grow_horizontal = 2
+grow_vertical = 2
+current_tab = 0
+
+[node name="Farm" type="ScrollContainer" parent="Panel/TabContainer"]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/TabContainer/Farm"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="PlotUpgrade" type="HBoxContainer" parent="Panel/TabContainer/Farm/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/TabContainer/Farm/VBoxContainer/PlotUpgrade"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Additional Plot"
+
+[node name="Cost" type="Label" parent="Panel/TabContainer/Farm/VBoxContainer/PlotUpgrade"]
+layout_mode = 2
+text = "Cost: 50"
+
+[node name="Button" type="Button" parent="Panel/TabContainer/Farm/VBoxContainer/PlotUpgrade"]
+layout_mode = 2
+text = "Unlock"
+
+[node name="YieldUpgrade" type="HBoxContainer" parent="Panel/TabContainer/Farm/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/TabContainer/Farm/VBoxContainer/YieldUpgrade"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Improved Yield (+25%)"
+
+[node name="Cost" type="Label" parent="Panel/TabContainer/Farm/VBoxContainer/YieldUpgrade"]
+layout_mode = 2
+text = "Cost: 30"
+
+[node name="Button" type="Button" parent="Panel/TabContainer/Farm/VBoxContainer/YieldUpgrade"]
+layout_mode = 2
+text = "Upgrade"
+
+[node name="GrowthUpgrade" type="HBoxContainer" parent="Panel/TabContainer/Farm/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/TabContainer/Farm/VBoxContainer/GrowthUpgrade"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Faster Growth (-20%)"
+
+[node name="Cost" type="Label" parent="Panel/TabContainer/Farm/VBoxContainer/GrowthUpgrade"]
+layout_mode = 2
+text = "Cost: 25"
+
+[node name="Button" type="Button" parent="Panel/TabContainer/Farm/VBoxContainer/GrowthUpgrade"]
+layout_mode = 2
+text = "Upgrade"
+
+[node name="Plants" type="ScrollContainer" parent="Panel/TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/TabContainer/Plants"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="GroundingPlant" type="HBoxContainer" parent="Panel/TabContainer/Plants/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/TabContainer/Plants/VBoxContainer/GroundingPlant"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Grounding Sprout"
+
+[node name="Cost" type="Label" parent="Panel/TabContainer/Plants/VBoxContainer/GroundingPlant"]
+layout_mode = 2
+text = "Cost: 40"
+
+[node name="Button" type="Button" parent="Panel/TabContainer/Plants/VBoxContainer/GroundingPlant"]
+layout_mode = 2
+text = "Unlock"
+
+[node name="MindfulnessPlant" type="HBoxContainer" parent="Panel/TabContainer/Plants/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/TabContainer/Plants/VBoxContainer/MindfulnessPlant"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Mindfulness Moss"
+
+[node name="Cost" type="Label" parent="Panel/TabContainer/Plants/VBoxContainer/MindfulnessPlant"]
+layout_mode = 2
+text = "Cost: 45"
+
+[node name="Button" type="Button" parent="Panel/TabContainer/Plants/VBoxContainer/MindfulnessPlant"]
+layout_mode = 2
+text = "Unlock"
+
+[node name="CompassionPlant" type="HBoxContainer" parent="Panel/TabContainer/Plants/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/TabContainer/Plants/VBoxContainer/CompassionPlant"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Self-Compassion Flower"
+
+[node name="Cost" type="Label" parent="Panel/TabContainer/Plants/VBoxContainer/CompassionPlant"]
+layout_mode = 2
+text = "Cost: 50"
+
+[node name="Button" type="Button" parent="Panel/TabContainer/Plants/VBoxContainer/CompassionPlant"]
+layout_mode = 2
+text = "Unlock"
+
+[node name="Combat" type="ScrollContainer" parent="Panel/TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/TabContainer/Combat"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="HealthUpgrade" type="HBoxContainer" parent="Panel/TabContainer/Combat/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/TabContainer/Combat/VBoxContainer/HealthUpgrade"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Fortitude +10"
+
+[node name="Cost" type="Label" parent="Panel/TabContainer/Combat/VBoxContainer/HealthUpgrade"]
+layout_mode = 2
+text = "Cost: 20"
+
+[node name="Button" type="Button" parent="Panel/TabContainer/Combat/VBoxContainer/HealthUpgrade"]
+layout_mode = 2
+text = "Upgrade"
+
+[node name="DodgeUpgrade" type="HBoxContainer" parent="Panel/TabContainer/Combat/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/TabContainer/Combat/VBoxContainer/DodgeUpgrade"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Dodge Window +15%"
+
+[node name="Cost" type="Label" parent="Panel/TabContainer/Combat/VBoxContainer/DodgeUpgrade"]
+layout_mode = 2
+text = "Cost: 35"
+
+[node name="Button" type="Button" parent="Panel/TabContainer/Combat/VBoxContainer/DodgeUpgrade"]
+layout_mode = 2
+text = "Upgrade"
+
+[node name="BalanceUpgrade" type="HBoxContainer" parent="Panel/TabContainer/Combat/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/TabContainer/Combat/VBoxContainer/BalanceUpgrade"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Balance Gauge +20%"
+
+[node name="Cost" type="Label" parent="Panel/TabContainer/Combat/VBoxContainer/BalanceUpgrade"]
+layout_mode = 2
+text = "Cost: 40"
+
+[node name="Button" type="Button" parent="Panel/TabContainer/Combat/VBoxContainer/BalanceUpgrade"]
+layout_mode = 2
+text = "Upgrade"
+
+[node name="CloseButton" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Close"
+
+[connection signal="pressed" from="Panel/CloseButton" to="." method="_on_close_button_pressed"]

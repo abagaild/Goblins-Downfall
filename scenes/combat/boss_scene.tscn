@@ -1,0 +1,70 @@
+[gd_scene load_steps=3 format=3 uid="uid://bqwx5j6yvnr8d"]
+
+[ext_resource type="Script" path="res://scripts/combat/mental_health_combat_system.gd" id="1_lfm2q"]
+[ext_resource type="Script" path="res://scripts/combat/bullet_hell_manager.gd" id="2_n3k4p"]
+
+[node name="BossScene" type="Node2D" groups=["boss_combat"]]
+
+[node name="MentalHealthCombatSystem" type="Node2D" parent="." groups=["boss_combat"]]
+script = ExtResource("1_lfm2q")
+stats_system_path = NodePath("../StatsSystem")
+battle_arena_path = NodePath("../BattleArena")
+
+[node name="BulletHellManager" type="Node2D" parent="."]
+script = ExtResource("2_n3k4p")
+player_dodge_area_path = NodePath("../PlayerDodgeArea")
+bullet_container_path = NodePath("../BulletContainer")
+combat_system_path = NodePath("../MentalHealthCombatSystem")
+
+[node name="BulletContainer" type="Node2D" parent="."]
+
+[node name="PlayerDodgeArea" type="Area2D" parent="."]
+position = Vector2(640, 500)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDodgeArea"]
+
+[node name="StatsSystem" type="Node" parent="."]
+
+[node name="BattleArena" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="ACTMenu" type="VBoxContainer" parent="UI"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = -200.0
+offset_right = 200.0
+offset_bottom = -20.0
+grow_vertical = 0
+
+[node name="BalanceGauge" type="ProgressBar" parent="UI"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -200.0
+offset_top = 20.0
+offset_right = 200.0
+offset_bottom = 50.0
+grow_horizontal = 2
+max_value = 1.0
+step = 0.01
+
+[node name="BattleLog" type="RichTextLabel" parent="UI"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -300.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = 200.0
+grow_horizontal = 0
+
+[connection signal="boss_battle_completed" from="MentalHealthCombatSystem" to="." method="_on_boss_battle_completed"]

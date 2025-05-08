@@ -1,30 +1,34 @@
 [gd_scene load_steps=5 format=3 uid="uid://d2363an7kjrm7"]
 
-[ext_resource type="PackedScene" uid="uid://b45xt5kh37kwu" path="res://scenes/player/player.tscn" id="1_lfm2q"]
-[ext_resource type="PackedScene" uid="uid://bfahu2xv271kl" path="res://scenes/ui/stats_display.tscn" id="2_yvr8p"]
-[ext_resource type="Script" uid="uid://dh01r1h2daymo" path="res://scripts/input_manager.gd" id="3_xvr8p"]
-[ext_resource type="PackedScene" uid="uid://u52mq103mb5w" path="res://scenes/combat/enemy.tscn" id="4_0rdsr"]
+[ext_resource type="Script" uid="uid://dauoivq0cepr6" path="res://scripts/main_game_controller.gd" id="1_a2b3c"]
+[ext_resource type="Script" uid="uid://cijln7d7a2ffg" path="res://scripts/game_loop_manager.gd" id="2_xvr8p"]
+[ext_resource type="PackedScene" uid="uid://bfahu2xv271kl" path="res://scenes/farm/farm_hud.tscn" id="3_yvr8p"]
+[ext_resource type="PackedScene" uid="uid://u52mq103mb5w" path="res://scenes/combat/enemies/basic_goblin.tscn" id="4_0rdsr"]
 
 [node name="MainGame" type="Node2D"]
+script = ExtResource("1_a2b3c")
+
+[node name="GameLoopManager" type="Node" parent="."]
+script = ExtResource("2_xvr8p")
 
 [node name="UI" type="CanvasLayer" parent="."]
 
-[node name="StatsDisplay" parent="UI" instance=ExtResource("2_yvr8p")]
-stats_owner_path = NodePath("../../Player")
+[node name="StatsDisplay" parent="UI" instance=ExtResource("3_yvr8p")]
+visible = false
 
-[node name="InputManager" type="Node" parent="."]
-script = ExtResource("3_xvr8p")
+[node name="PhaseTransition" parent="UI" instance=ExtResource("4_0rdsr")]
+visible = false
 
-[node name="Ground" type="StaticBody2D" parent="."]
-collision_mask = 0
+[node name="PauseButton" type="Button" parent="UI"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -100.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = 60.0
+grow_horizontal = 0
+text = "Pause"
 
-[node name="ColorRect" type="ColorRect" parent="Ground"]
-offset_right = 1280.0
-offset_bottom = 720.0
-color = Color(0.2, 0.4, 0.2, 1)
-
-[node name="Player" parent="." instance=ExtResource("1_lfm2q")]
-position = Vector2(640, 360)
-
-[node name="Enemy" parent="." instance=ExtResource("4_0rdsr")]
-scale = Vector2(0.25, 0.25)
+[connection signal="phase_changed" from="GameLoopManager" to="." method="_on_game_loop_manager_phase_changed"]
+[connection signal="pressed" from="UI/PauseButton" to="." method="_on_pause_button_pressed"]

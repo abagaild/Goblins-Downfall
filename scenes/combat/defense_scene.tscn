@@ -1,0 +1,68 @@
+[gd_scene load_steps=3 format=3 uid="uid://c8r5y6x2n4qvd"]
+
+[ext_resource type="Script" path="res://scripts/combat/pvz_combat_system.gd" id="1_lfm2q"]
+[ext_resource type="PackedScene" uid="uid://bfahu2xv271kl" path="res://scenes/ui/stats_display.tscn" id="2_yvr8p"]
+
+[node name="DefenseScene" type="Node2D" groups=["combat_scene"]]
+
+[node name="CombatSystem" type="Node2D" parent="." groups=["combat_system"]]
+script = ExtResource("1_lfm2q")
+grid_width = 9
+grid_height = 5
+starting_sun = 100
+
+[node name="GridContainer" type="Node2D" parent="."]
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="StatsDisplay" parent="UI" instance=ExtResource("2_yvr8p")]
+
+[node name="SunDisplay" type="Label" parent="UI"]
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 120.0
+offset_bottom = 60.0
+text = "Sun: 100"
+
+[node name="PlantSelector" type="HBoxContainer" parent="UI"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -200.0
+offset_top = -80.0
+offset_right = 200.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+
+[node name="WaveDisplay" type="Label" parent="UI"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -100.0
+offset_top = 20.0
+offset_right = 100.0
+offset_bottom = 60.0
+grow_horizontal = 2
+text = "Wave: 1/3"
+horizontal_alignment = 1
+
+[node name="ToBossButton" type="Button" parent="UI"]
+visible = false
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -200.0
+offset_top = -60.0
+offset_right = -20.0
+offset_bottom = -20.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Face Boss"
+
+[connection signal="game_over" from="CombatSystem" to="." method="_on_combat_system_game_over"]

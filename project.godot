@@ -20,6 +20,7 @@ config/icon="res://icon.png"
 EasyMenuManager="*res://addons/easy_menus/core/menu_manager.gd"
 EasySaveLoadManager="*res://addons/easy_menus/core/save_load_manager.gd"
 MenuManager="*res://addons/easy_menus/scripts/autoloads/MenuManager.gd"
+GameLoop="*res://scripts/game_loop_manager.gd"
 
 [display]
 
@@ -38,3 +39,4 @@ enabled=PackedStringArray("res://addons/easy_menus/plugin.cfg", "res://addons/sc
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+

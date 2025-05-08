@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://bqwx5j6yvnr8d"]
+
+[ext_resource type="Script" uid="uid://dvhbqqr30iknd" path="res://scripts/farm/farm_manager.gd" id="1_lfm2q"]
+[ext_resource type="PackedScene" uid="uid://bfahu2xv271kl" path="res://scenes/farm/farm_hud.tscn" id="3_n3k4p"]
+
+[node name="FarmScene" type="Node2D"]
+
+[node name="FarmManager" type="Node2D" parent="." groups=["farm_manager"]]
+script = ExtResource("1_lfm2q")
+cell_size = Vector2(120, 120)
+grid_offset = Vector2(480, 200)
+
+[node name="FarmHUD" parent="." instance=ExtResource("3_n3k4p")]
+
+[node name="DayNightCycle" type="Timer" parent="."]
+wait_time = 120.0
+one_shot = true
+
+[node name="ToDefenseButton" type="Button" parent="."]
+offset_left = 1050.0
+offset_top = 650.0
+offset_right = 1250.0
+offset_bottom = 700.0
+text = "Defend Farm"
+
+[connection signal="timeout" from="DayNightCycle" to="FarmManager" method="_on_day_night_cycle_timeout"]
+[connection signal="pressed" from="ToDefenseButton" to="FarmManager" method="_on_to_defense_button_pressed"]

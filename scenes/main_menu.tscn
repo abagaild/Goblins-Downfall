@@ -14,6 +14,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_gkrwc")
 menu_name = "MainMenu"
+auto_center = false
 default_visibility = true
 
 [node name="TextureRect" type="TextureRect" parent="."]
