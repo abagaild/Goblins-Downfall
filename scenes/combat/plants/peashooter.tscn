@@ -1,0 +1,63 @@
+[gd_scene load_steps=6 format=3 uid="uid://c8qvhwlvxyal5"]
+
+[ext_resource type="Script" uid="uid://bbol5vf88ok6v" path="res://scripts/combat/plants/peashooter.gd" id="1_yvn2p"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_p86h3"]
+
+[sub_resource type="Animation" id="Animation_j6ywx"]
+resource_name = "shoot"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.5),
+"transitions": PackedFloat32Array(0.5, 2, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-5, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dovo2"]
+_data = {
+&"shoot": SubResource("Animation_j6ywx")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vgvob"]
+size = Vector2(800, 50)
+
+[node name="Peashooter" type="Node2D"]
+script = ExtResource("1_yvn2p")
+animation_player_path = NodePath("AnimationPlayer")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(10, -9.53674e-07)
+scale = Vector2(26, 24.5)
+texture = SubResource("PlaceholderTexture2D_p86h3")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_dovo2")
+}
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_left = -25.0
+offset_top = -40.0
+offset_right = 25.0
+offset_bottom = -35.0
+value = 100.0
+show_percentage = false
+
+[node name="DetectionArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+position = Vector2(400, 0)
+shape = SubResource("RectangleShape2D_vgvob")
+
+[connection signal="health_changed" from="." to="." method="_on_health_changed"]
+[connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]

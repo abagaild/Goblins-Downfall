@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dsotf0tp4yi1j"]
+
+[ext_resource type="Script" path="res://scripts/combat/sun.gd" id="1_yjm2p"]
+[ext_resource type="Texture2D" path="res://assets/combat/sun.png" id="2_n3k4p"]
+
+[node name="Sun" type="Area2D"]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1_yjm2p")
+sprite = ExtResource("2_n3k4p")

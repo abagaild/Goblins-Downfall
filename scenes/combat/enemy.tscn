@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://u52mq103mb5w"]
+
+[ext_resource type="Script" uid="uid://ijgw8aml6kyr" path="res://scripts/combat/enemies/fodder_enemies.gd" id="1_pu8qf"]
+[ext_resource type="Texture2D" uid="uid://ck220qbjm8844" path="res://assets/enemies/placeholder.png" id="2_ygxny"]
+
+[node name="Enemy" type="Node2D"]
+script = ExtResource("1_pu8qf")
+sprite = ExtResource("2_ygxny")
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_left = -50.0
+offset_top = -70.0
+offset_right = 50.0
+offset_bottom = -60.0
+value = 100.0
+show_percentage = false
+
+[connection signal="health_changed" from="." to="." method="_on_health_changed"]
